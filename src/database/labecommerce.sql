@@ -3,7 +3,7 @@ CREATE TABLE if NOT EXISTS users (
     id TEXT PRIMARY KEY NOT NULL,
     name TEXT NOT NULL,
     email TEXT UNIQUE NOT NULL,
-    password TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL,
     created_at TEXT NOT NULL
 );
 INSERT INTO users (id, name, email, password, created_at)
@@ -21,7 +21,7 @@ VALUES
      "ruan@gmail.com",
      "ruan123",
      "2023-06-19T14:05:12.987Z"
-     ), */
+     ), 
     (
         "u003",
         "Dhouglas",
@@ -70,7 +70,7 @@ VALUES
      400,
      "Headset gamer com som imersivo e microfone integrado",
      "https://picsum.photos/seed/Headset%20Gamer/400"
-     ), */
+     ),
     (
         "prod005",
         "Cadeira Gamer Ergonômica",
@@ -78,6 +78,29 @@ VALUES
         "Cadeira gamer ergonômica com ajustes de altura e inclinação",
         "https://picsum.photos/seed/Cadeira%20Gamer/400"
     );
+
+CREATE TABLE IF NOT EXISTS purchases(
+    id TEXT PRIMARY KEY NOT NULL,
+    buyer TEXT NOT NULL,
+    total_price REAL NOT NULL,
+    created_at TEXT NOT NULL,
+    FOREIGN KEY (buyer) REFERENCES users(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE if NOT EXISTS purchases_products(
+    purchase_id TEXT NOT NULL,
+    product_id TEXT NOT NULL,
+    quantity REAL NOT NULL,
+    FOREIGN KEY (purchase_id) REFERENCES purchases(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
 SELECT *
 FROM products AS funcionalidade1;
 SELECT *
@@ -94,19 +117,6 @@ WHERE id = 'prod005';
 
 
 
-
-
-----------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS purchases(
-    id TEXT PRIMARY KEY NOT NULL,
-    buyer TEXT NOT NULL,
-    total_price REAL NOT NULL,
-    created_at TEXT NOT NULL,
-    FOREIGN KEY (buyer) REFERENCES users(id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-);
 SELECT * FROM purchases;
 
     UPDATE purchases 
@@ -123,17 +133,7 @@ FROM users
 JOIN purchases ON users.id = purchases.buyer;
 
 
-CREATE TABLE if NOT EXISTS purchases_products(
-    purchase_id TEXT NOT NULL,
-    product_id TEXT NOT NULL,
-    quantity REAL NOT NULL,
-    FOREIGN KEY (purchase_id) REFERENCES purchases(id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-    FOREIGN KEY (product_id) REFERENCES products(id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-);
+
 SELECT * FROM purchases_products;
 
 INSERT INTO purchases (id, buyer , total_price , created_at)
