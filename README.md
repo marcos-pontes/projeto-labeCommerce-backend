@@ -3,7 +3,7 @@
 Welcome to the LabeCommerce API documentation! Here you will find all the information you need to interact with the API and make the most out of the LabeCommerce system.
 
 ## Documentation link:
-https://documenter.getpostman.com/view/26594016/2s93sgXqoh#cc8b9684-d649-496c-a8ca-5c4b9e02c761
+https://documenter.getpostman.com/view/26594016/2s93sgXqoh#cc8b9684-d649-496c-a8ca-5c4b9e02c76
 
 ## What is LabeCommerce?
 
