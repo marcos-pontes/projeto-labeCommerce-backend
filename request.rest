@@ -1,0 +1,76 @@
+###Create user
+POST  http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "id":"u004",
+    "name": "joão",
+    "email":"joao@gmail.com.br",
+    "password":"Joao@123"
+}
+
+###Get all uers
+GET http://localhost:3003/users/?name=
+
+### Edit user by id
+PUT http://localhost:3003/users/u004
+Content-Type: application/json
+
+{
+    "name": "joão jose"
+}
+
+###Delete user
+DELETE http://localhost:3003/users/u004
+
+###Create product
+POST  http://localhost:3003/products
+Content-Type: application/json
+
+    {
+        "id": "prod005",
+        "name": "ryzen",
+        "price": 1000,
+        "description": "Melhor processador do mercado!",
+        "image_url": "https://picsum.photos/seed/Processador%20gamer/400"
+    }
+
+###Get all products
+GET http://localhost:3003/products/?name=
+
+###Edit products
+PUT http://localhost:3003/users/u002
+Content-Type: application/json
+
+    {
+        "price": 901
+    }
+
+### Delete product by id
+DELETE http://localhost:3003/products/prod005
+
+
+###Create Purchase
+POST  http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+    "id": "pur001",
+    "buyer": "u001",
+    "products": [
+        {
+            "id": "prod001",
+            "quantity": 2
+        },
+        {
+            "id": "prod002",
+            "quantity": 1
+        }
+    ]
+}
+
+###Get purchases by id
+GET http://localhost:3003/purchases/pur001
+
+### Delete purchase by id
+DELETE http://localhost:3003/purchases/pur001
